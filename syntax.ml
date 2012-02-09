@@ -13,6 +13,7 @@ type term =
   | TmSucc of info * term
   | TmPred of info * term
   | TmIsZero of info * term
+  | TmNot of info * term
 
 type command =
   | Eval of info * term
@@ -69,6 +70,8 @@ and printtm_AppTerm outer t = match t with
        pr "pred "; printtm_ATerm false t1
   | TmIsZero(_,t1) ->
        pr "iszero "; printtm_ATerm false t1
+  | TmNot(_,t1) ->
+       pr "not "; printtm_ATerm false t1
   | t -> printtm_ATerm outer t
 
 and printtm_ATerm outer t = match t with

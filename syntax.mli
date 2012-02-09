@@ -12,6 +12,7 @@ type term =
   | TmSucc of info * term
   | TmPred of info * term
   | TmIsZero of info * term
+  | TmNot of info * term
 
 type command =
   | Eval of info * term

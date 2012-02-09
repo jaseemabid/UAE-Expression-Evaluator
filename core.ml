@@ -43,6 +43,13 @@ let rec eval1 t = match t with
   | TmIsZero(fi,t1) ->
       let t1' = eval1 t1 in
       TmIsZero(fi, t1')
+  | TmNot(_,TmTrue(_)) ­->
+        TmFalse(dummyinfo)
+  | TmNot(_,TmFalse(_)) -­>
+        TmTrue(dummyinfo) 
+  | TmNot(fi,t1) ­->
+        let t1' = eval1 t1 in
+        TmNot(fi, t1')
   | _ -> 
       raise NoRuleApplies
 
